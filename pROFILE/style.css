@@ -1,0 +1,327 @@
+/* General reset and styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: white;
+    --main-color: #00ffee;
+    --highlight-color: red;
+}
+
+html {
+    font-size: 40%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrollbars from appearing */
+    position: relative;
+}
+
+/* Starfield animation */
+.star-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    animation: moveStars 200s linear infinite;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.8;
+    animation: twinkle 1.5s infinite alternate, move-star 50s linear infinite;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes moveStars {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-2000px, -2000px);
+    }
+}
+
+@keyframes move-star {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(200px, 200px);
+    }
+}
+
+/* Sections' animations */
+section {
+    min-height: 100vh;
+    padding: 10rem 12%;
+    opacity: 0; /* Make sections initially invisible */
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header and Logo */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 4rem 12%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 6rem;
+    color: var(--highlight-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.logo span {
+    color: var(--highlight-color);
+    text-shadow: 0 0 25px var(--highlight-color);
+}
+
+.profile {
+    flex: 1;
+}
+
+.profile img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 25px 10px var(--highlight-color);
+}
+
+.navbar a {
+    font-size: 2.8rem;
+    color: white;
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--highlight-color);
+    border-bottom: 3px var(--highlight-color);
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15rem;
+}
+
+.home-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    justify-content: center;
+}
+
+span {
+    color: var(--highlight-color);
+}
+
+.home-content h3 {
+    font-size: 2rem;
+}
+
+.home-content h1 {
+    font-size: 3rem;
+}
+
+.home-img {
+    border-radius: 50%;
+}
+
+.home-img img {
+    position: relative;
+    top: 3rem;
+    width: 32vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--main-color);
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.home-img img:hover {
+    box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color), 0 0 100px var(--main-color);
+}
+
+.home-content p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.8;
+    max-width: 1000px;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: transparent;
+    border: 2px solid gray;
+    font-size: 2.5rem;
+    border-radius: 50%;
+    color: var(--highlight-color);
+    margin: 1.2rem;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: brown;
+    transform: scale(1.3) translateY(-5px);
+    box-shadow: 0 0 25px var(--highlight-color);
+    background-color: var(--highlight-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--highlight-color);
+    box-shadow: 0 0 15px var(--highlight-color);
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: black;
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0.2rem;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px var(--highlight-color);
+}
+
+.btn-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.text-animation {
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+}
+
+.text-animation span::before {
+    content: 'Web Developer';
+    color: var(--highlight-color);
+    animation: words 20s infinite;
+}
+
+@keyframes words {
+    0% {
+        content: 'Frontend Web Developer';
+    }
+    20% {
+        content: 'App Developer';
+    }
+    40% {
+        content: 'UI / UX Designer';
+    }
+    60% {
+        content: 'Flutter Developer';
+    }
+    80% {
+        content: '';
+    }
+}
+
+/* Hover effects for Education, Skills, and Contact */
+#education, #skills, #contact {
+    font-size: 2.5rem;
+    color: var(--highlight-color);
+    text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#education:hover, #skills:hover, #contact:hover {
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+}
+
+
+
+.section {
+    display: none; /* Hide by default */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.section.visible {
+    display: block;
+    opacity: 1;
+}
